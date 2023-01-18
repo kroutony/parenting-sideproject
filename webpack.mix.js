@@ -11,11 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
-let publicPath = 'public';
+let publicPath = 'public/assets';
 mix.setPublicPath('./')
     .sourceMaps()
-    .js('src/js/app.js', `${publicPath}/js`)
-    .sass('src/sass/app.scss', `${publicPath}/css`)
+    .js('public/src/js/app.js', `${publicPath}/js`)
+    .sass('public/src/sass/app.scss', `${publicPath}/css`)
     .version()
     .vue()
 

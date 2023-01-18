@@ -25,6 +25,7 @@
     "vue-loader": "^16.8.3"
   },
   "dependencies": {
-    "@lottiefiles/vue-lottie-player": "^1.1.0"
+    "@lottiefiles/vue-lottie-player": "^1.1.0",
+    "express": "^4.18.2"
   }
 }
