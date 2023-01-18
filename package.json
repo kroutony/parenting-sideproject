@@ -1,0 +1,30 @@
+{
+  "name": "2023maintain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.mix.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^5.2.3",
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.49",
+    "normalize.css": "^8.0.1",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.57.1",
+    "sass-loader": "^12.6.0",
+    "vue": "^3.2.45",
+    "vue-loader": "^16.8.3"
+  },
+  "dependencies": {
+    "@lottiefiles/vue-lottie-player": "^1.1.0"
+  }
+}
