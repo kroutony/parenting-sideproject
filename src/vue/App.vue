@@ -116,6 +116,7 @@ export default {
       {actionType: 1},
     ]
     return {
+      apiUrl: 'http://10.16.8.142:3000',
       totalVideoLength: 60,
       lengthPerFrame: 6,
       totalFrames: 10,
@@ -160,36 +161,6 @@ export default {
             },
           ]
         },
-        b: {
-          name: '心心',
-          timeline: JSON.parse(JSON.stringify(defaultTimeline)),
-          actions: [
-            {
-              type: 1,
-              icon: 'http://fakeimg.pl/200x200',
-              video: 'src/assets/video/b-1.mp4',
-              background: 'rgb(208 225 121)'
-            },
-            {
-              type: 2,
-              icon: 'src/assets/img/action-1.jpg',
-              video: 'src/assets/video/b-2.mp4',
-              background: 'rgb(247 183 136)'
-            },
-            {
-              type: 3,
-              icon: 'src/assets/img/action-2.jpg',
-              video: 'src/assets/video/b-3.mp4',
-              background: 'rgb(223 179 212)'
-            },
-            {
-              type: 4,
-              icon: 'src/assets/img/action-3.jpg',
-              video: 'src/assets/video/b-4.mp4',
-              background: 'rgb(164 216 204)'
-            },
-          ]
-        },
         c: {
           name: '樂樂',
           timeline: JSON.parse(JSON.stringify(defaultTimeline)),
@@ -220,6 +191,37 @@ export default {
             },
           ]
         },
+        b: {
+          name: '心心',
+          timeline: JSON.parse(JSON.stringify(defaultTimeline)),
+          actions: [
+            {
+              type: 1,
+              icon: 'http://fakeimg.pl/200x200',
+              video: 'src/assets/video/b-1.mp4',
+              background: 'rgb(208 225 121)'
+            },
+            {
+              type: 2,
+              icon: 'src/assets/img/action-1.jpg',
+              video: 'src/assets/video/b-2.mp4',
+              background: 'rgb(247 183 136)'
+            },
+            {
+              type: 3,
+              icon: 'src/assets/img/action-2.jpg',
+              video: 'src/assets/video/b-3.mp4',
+              background: 'rgb(223 179 212)'
+            },
+            {
+              type: 4,
+              icon: 'src/assets/img/action-3.jpg',
+              video: 'src/assets/video/b-4.mp4',
+              background: 'rgb(164 216 204)'
+            },
+          ]
+        },
+
         d: {
           name: '奇奇',
           timeline: JSON.parse(JSON.stringify(defaultTimeline)),
@@ -413,8 +415,14 @@ export default {
       this.stageCharacters.forEach(name => {
         payload.timeline.push(this.characters[name].timeline.map(t => t.actionType))
       })
-      console.log(JSON.stringify(payload));
-      fetch('src/assets/video/a-1.mp4')
+      let headers = {
+        "Content-Type": "application/json",
+      }
+      fetch(`${this.apiUrl}/video`, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(payload)
+      })
           .then(resp => {
             resp.blob()
                 .then(blob => {
@@ -422,12 +430,27 @@ export default {
                   var fileLink = document.createElement('a')
                   fileLink.href = url
                   fileLink.target = '_blank'
+                  fileLink.download = '小行星_一起去飛翔'
                   document.body.appendChild(fileLink)
                   fileLink.click()
                   // fileLink.remove()
                 })
 
           })
+      // fetch('src/assets/video/a-1.mp4', {})
+      //     .then(resp => {
+      //       resp.blob()
+      //           .then(blob => {
+      //             var url = window.URL.createObjectURL(blob)
+      //             var fileLink = document.createElement('a')
+      //             fileLink.href = url
+      //             fileLink.target = '_blank'
+      //             document.body.appendChild(fileLink)
+      //             fileLink.click()
+      //             // fileLink.remove()
+      //           })
+      //
+      //     })
     },
     restart() {
       clearInterval(this.timer)
