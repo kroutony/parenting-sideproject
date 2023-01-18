@@ -115,6 +115,12 @@ body {
     left: 50%;
     transform: translateX(-50%);
   }
+  &.playing {
+    opacity: .1;
+  }
+  &:hover {
+    opacity: 1;
+  }
   .add {
     position: absolute;
     top: -25px;

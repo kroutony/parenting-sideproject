@@ -19,7 +19,7 @@
         <video :src="videoSource(c)" style="width: 100%" :class="`video_${i}`" muted="muted" playsinline preload=""></video>
       </div>
     </div>
-    <div class="controls">
+    <div class="controls" :class="{playing: playing}">
       <div class="add" @click="addCharacter($event)">
         <img src="src/assets/icons/toggle.png" alt="">
       </div>
