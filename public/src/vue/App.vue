@@ -434,7 +434,7 @@ export default {
               var fileLink = document.createElement('a')
               fileLink.href = url
               fileLink.target = '_blank'
-              fileLink.download = '小行星_一起去飛翔'
+              fileLink.download = '小行星_一起跳舞吧'
               document.body.appendChild(fileLink)
               fileLink.click()
               fileLink.remove()
